@@ -2,15 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 import App from './containers/app';
 import userReducer from './reducers/user';
-import { fetchUserEpic}  from './epics/user';
-
+import { fetchUser }  from './actions/user';
 
 const routes = (
 	<Route path="/" component={App}>
@@ -22,7 +20,7 @@ const reducer = combineReducers({
 	routing: routerReducer
 });
 
-const rootEpic = combineEpics(fetchUserEpic);
+const rootEpic = combineEpics(fetchUser);
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
