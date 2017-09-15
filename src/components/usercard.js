@@ -15,14 +15,14 @@ const avatarStyle = {
 }
 
 const UserCard = ({user}) => (
-	<Paper style={style} zDepth={1} rounded={false}>
+	<div style={style} zDepth={5} rounded={false}>
 		<Avatar
 				src={user? user.avatar_url : ''}
 				size={120}
 				style={avatarStyle}
 			/>
 		<div>{user? user.name : ''}</div>
-	</Paper>
+	</div>
 );
 
 export default UserCard;

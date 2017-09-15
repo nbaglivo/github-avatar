@@ -7,7 +7,6 @@ const users = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_USER_FULFILLED:
 			return state.set('user', action.payload);
-
 		default:
 			return state;
 	}
