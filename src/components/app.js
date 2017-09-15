@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TextField, Paper } from 'material-ui';
-import { CircularProgress } from 'material-ui/Progress'
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
+import { red } from 'material-ui/colors';
 
 import UserCard from '../containers/usercard';
 
@@ -14,7 +14,7 @@ const styles = {
 		justifyContent: 'center',
 		flexDirection: 'column',
 		height: '100vh',
-		backgroundColor: '#f44336'
+		backgroundColor: red[500]
 	},
 	paper: {
 		display: 'flex',
