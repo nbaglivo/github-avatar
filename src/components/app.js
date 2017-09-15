@@ -1,12 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import { TextField, Paper } from 'material-ui';
+import { CircularProgress } from 'material-ui/Progress'
+import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 
 import UserCard from '../containers/usercard';
 
-const style = {
+const styles = {
 	main: {
 		display: 'flex',
 		alignItems: 'center',
@@ -21,15 +22,19 @@ const style = {
 	}
 };
 
-const App = ({ pushPath, children, onInputChanged }) => (
-	<MuiThemeProvider>
-		<main style={style.main}>
-			<Paper style={style.paper} zDepth={4} rounded={false}>
-				<TextField hintText="Write a Github username" onChange={ (event) => onInputChanged(event.target.value) }/>
-				<UserCard />
-			</Paper>
-		</main>
-	</MuiThemeProvider>
-)
+const theme = createMuiTheme();
 
-export default App
+function App({ pushPath, children, classes, onInputChanged }) {
+	return (
+		<MuiThemeProvider theme={theme}>
+			<main className={classes.main} >
+				<Paper className={classes.paper} zDepth={4} rounded={false}>
+					<TextField label="Write a Github username" onChange={ (event) => onInputChanged(event.target.value) }/>
+					<UserCard />
+				</Paper>
+			</main>
+		</MuiThemeProvider>
+	)
+}
+
+export default withStyles(styles)(App);
