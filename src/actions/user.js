@@ -20,6 +20,7 @@ export const fetchUserEpic = action$ => (
 			ajax
 				.getJSON(`https://api.github.com/users/${action.payload}`)
 				.map(fetchUserFulfilled)
+				.takeUntil(action$.ofType(FETCH_USER))
 				.catch(error => Observable.of(fetchUserError(error)))
 	  )
 );
